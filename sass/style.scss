@@ -133,20 +133,27 @@ body {
 
 .tag-size-1 {
   font-size: 90%;
+  color: mediumvioletred;
 }
 
 .tag-size-2 {
   font-size: 100%;
+  color: darkblue;
 }
 
 .tag-size-3 {
-  font-size: 110%;
+  font-size: 115%;
+  color: orange;
 }
 
 .tag-size-4 {
-  font-size: 120%;
+  font-size: 125%;
+  color: palegreen;
+
+}
+.tag-size-5 {
+  font-size: 140%;
+  color: red;
+  font-weight: bold;
 }
 
-.tag-size-5 {
-  font-size: 130%;
-}
