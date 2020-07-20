@@ -293,7 +293,6 @@ function calculateAuthorClass(count, params){
   const classNumber = Math.floor(percentage * (optCloudAuthorClassCount - 1) + 1);
 
   return optCloudAuthorClassPrefix + classNumber;
-
 }
 
 function generateAuthors (){
@@ -350,7 +349,7 @@ function generateAuthors (){
 
     /* [NEW] generate code of a link and add it to allAuthorsHTML */
     
-    const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '"><span>' + author + '</span></a></li>';
+    const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '"><span>' + author + '</span></a></li>' + '(' + allAuthors[author] + ')';
     
     console.log('authorLinkHTML:', authorLinkHTML);
     
