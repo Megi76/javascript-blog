@@ -51,7 +51,9 @@ const optArticleSelector = '.post',
   optTagListSelector = '.tags.list',
   optCloudClassCount = '5',
   optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.authors.list';
+  optAuthorsListSelector = '.authors.list',
+  optCloudAuthorClassCount = '4',
+  optCloudAuthorClassPrefix = 'author-size-';
   
 const generateTitleLinks = function(customSelector = ''){
 
@@ -123,6 +125,7 @@ function calculateTagClass(count, params){
   
   return optCloudClassPrefix + classNumber;
 }
+
 
 function generateTags(){
 
@@ -280,9 +283,18 @@ function calculateAuthorsParams(authors){
     }
   }
   return params;
-
 }
 
+function calculateAuthorClass(count, params){
+
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor(percentage * (optCloudAuthorClassCount - 1) + 1);
+
+  return optCloudAuthorClassPrefix + classNumber;
+
+}
 
 function generateAuthors (){
 
@@ -337,7 +349,12 @@ function generateAuthors (){
   for(let author in allAuthors){
 
     /* [NEW] generate code of a link and add it to allAuthorsHTML */
-    allAuthorsHTML += '<li><a href="#author-' + author + '"><span>' + author + '</span></a></li>' + '(' + allAuthors[author] + ') ';
+    
+    const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '"><span>' + author + '</span></a></li>';
+    
+    console.log('authorLinkHTML:', authorLinkHTML);
+    
+    allAuthorsHTML += authorLinkHTML;
     /* [NEW] END LOOP: for each tag in allTags: */
   }
 
