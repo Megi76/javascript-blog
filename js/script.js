@@ -263,6 +263,27 @@ addClickListenersToTags();
 
 // part 5 - add authors
 
+function calculateAuthorsParams(authors){
+  const params = {
+    'max' : 0,
+    'min' : 999999
+  };
+
+  for (let author in authors) {
+    console.log(author + ' is used ' + authors[author] + ' times');
+
+    if(authors[author] > params.max) {
+      params.max = authors[author];
+    }  
+    if(authors[author] < params.min) {
+      params.min = authors[author];
+    }
+  }
+  return params;
+
+}
+
+
 function generateAuthors (){
 
   /* [NEW] create a new variable allAuthors with an empty object */
@@ -307,6 +328,9 @@ function generateAuthors (){
   const authorList = document.querySelector(optAuthorsListSelector);
 
   /* [NEW] create variable for all links HTML code */
+  const authorsParams = calculateAuthorsParams(allAuthors);
+  console.log(authorsParams);
+
   let allAuthorsHTML = '';
 
   /* [NEW] START LOOP: for each author in allAuthors */
