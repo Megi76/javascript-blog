@@ -1,5 +1,11 @@
 'use strict';
 
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+};
+
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
@@ -81,7 +87,8 @@ const generateTitleLinks = function(customSelector = ''){
     console.log (articleTitle);
 
     /* d: create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTML = templates.articleLink(linkHTMLData);
 
     /* e: insert link into titleList */
     html = html + linkHTML;
@@ -157,8 +164,10 @@ function generateTags(){
 
     for (let tag of articleTagsArray){  
 
-      /* generate HTML of the link */
-      const linkHTML = '<li> <a href="#tag-' + tag + '">' + tag + '</a></li>     '; 
+      /* generate HTML of the tag */
+      
+      const linkHTMLData = {id: tag, title: tag};
+      const linkHTML = templates.tagLink(linkHTMLData);
 
       /* add generated code to html variable */
       html = html + linkHTML;
@@ -317,8 +326,10 @@ function generateAuthors (){
     /* get author from data-author attribute */
     const author = article.getAttribute('data-author');
 
-    /*grenerate HTML of the link*/
-    const linkAuthor = '<p><a href="#author-' + author +'">by ' + author+ '</a></p>';
+    /*grenerate HTML of the author*/
+    const linkHTMLData = {id: author, title: author};
+    const linkAuthor = templates.authorLink(linkHTMLData);
+
 
     /* add generated code to html variable */
     html = html + linkAuthor;
@@ -351,7 +362,7 @@ function generateAuthors (){
 
     /* [NEW] generate code of a link and add it to allAuthorsHTML */
     
-    const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '"><span>' + author + '</span></a></li>  ' + '(' + allAuthors[author] + ')';
+    const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '"><span>' + author + '</span></a></li> ' + '(' + allAuthors[author] + ')';
     
     console.log('authorLinkHTML:', authorLinkHTML);
     
