@@ -143,4 +143,9 @@ body {
   color: red;
   font-weight: bold;
 }
+
+/*authors*/
+.authors li a {
+  text-decoration: none;
+}
 /*# sourceMappingURL=style.css.map */
