@@ -84,6 +84,7 @@ body {
 /* Authors */
 .authors li {
   margin-bottom: 12px;
+  display: inline-block;
 }
 
 .authors li a {

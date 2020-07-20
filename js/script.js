@@ -1,5 +1,18 @@
 'use strict';
 
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list',
+  optArticleAuthorSelector = '.post-author',
+  optTagListSelector = '.tags.list',
+  optCloudClassCount = '5',
+  optCloudClassPrefix = 'tag-size-',
+  optAuthorsListSelector = '.authors.list',
+  optCloudAuthorClassCount = '4',
+  optCloudAuthorClassPrefix = 'author-size-';
+  
+
 const titleClickHandler = function(event){
   event.preventDefault();
   const clickedElement = this;
@@ -43,17 +56,6 @@ const titleClickHandler = function(event){
 
 // Part 2 - generate links
 
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author',
-  optTagListSelector = '.tags.list',
-  optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.authors.list',
-  optCloudAuthorClassCount = '4',
-  optCloudAuthorClassPrefix = 'author-size-';
   
 const generateTitleLinks = function(customSelector = ''){
 
@@ -349,7 +351,7 @@ function generateAuthors (){
 
     /* [NEW] generate code of a link and add it to allAuthorsHTML */
     
-    const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '"><span>' + author + '</span></a></li>' + '(' + allAuthors[author] + ')';
+    const authorLinkHTML = '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '"><span>' + author + '</span></a></li>  ' + '(' + allAuthors[author] + ')';
     
     console.log('authorLinkHTML:', authorLinkHTML);
     
