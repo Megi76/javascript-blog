@@ -38,7 +38,6 @@ body {
     text-transform: none;
     font-weight: 400;
     color: lighten($color-dark, 20%);
-
   }
 }
 
@@ -101,24 +100,47 @@ body {
   }
 }
 
-
 .authors li a {
   text-decoration: none;
-  color: grey;
+  color: darkcyan
 }
-
 
 /* Post */
 
+.posts {
+  position: relative;
+  min-height: 700px;
+}
+
 .post {
-  display: none;
+  opacity: 0;
+  transition: 1s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 40px;
+
   &.active {
-    display: block;
+    opacity: 1;
+    z-index: 1;
   }
 }
 
 .post-author {
-  font-style: italic;
+  font-style: normal;
+}
+
+.post-author li {
+list-style-type: none;
+}
+
+.post-author li a {
+  text-decoration: none;
+  color: darkcyan;
+}
+
+.post-author .active {
+  font-weight: bold;
 }
 
 .post-tags {
